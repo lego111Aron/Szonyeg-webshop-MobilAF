@@ -9,6 +9,9 @@
     <string name="password_again">Jelszó megerősítése</string>
     <string name="cancel">Mégse</string>
     <string name="phone_number">Telefonszám</string>
+    <string name="address">Póstai cím</string>
+    <string name="buyer">vasarlo</string>
+    <string name="seller">eladó</string>
     <string-array name="phone_modes">
         <item>Otthoni</item>
         <item>Munkahelyi</item>
