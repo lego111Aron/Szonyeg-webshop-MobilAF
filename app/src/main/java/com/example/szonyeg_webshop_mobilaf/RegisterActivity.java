@@ -84,13 +84,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (!password.equals(passwordConfirm)) {
             Log.e(LOG_TAG, "Passwords do not match.");
-            Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "A jelszavak nem egyeznek!", Toast.LENGTH_SHORT).show();
             return;
         }
 
         int checkedId = termsRadioGroup.getCheckedRadioButtonId();
         if (checkedId == R.id.declineTermsRadioButton) {
-            Toast.makeText(this, "You must accept the terms and conditions to register.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "A felhasználási feltételek elfogadása kötelező!", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -104,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
                     startShopping();
                 } else {
                     Log.d(LOG_TAG, "User creation failed");
-                    Toast.makeText(RegisterActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "A regisztráció sikertelen: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

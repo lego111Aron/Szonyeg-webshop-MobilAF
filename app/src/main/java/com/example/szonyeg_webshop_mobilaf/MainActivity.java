@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                     startShopping();
                 } else {
                     Log.d(LOG_TAG, "User login failed");
-                    Toast.makeText(MainActivity.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Sikertelen bejelentkezés: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
