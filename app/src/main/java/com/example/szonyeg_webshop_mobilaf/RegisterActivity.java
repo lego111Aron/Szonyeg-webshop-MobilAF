@@ -77,17 +77,28 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void register(View view) {
-        String userName = userNameEditText.getText().toString();
-        String email = userEmailEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        String passwordConfirm = passwordConfirmEditText.getText().toString();
+        String userName = userNameEditText.getText().toString().trim();
+        String email = userEmailEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+        String passwordConfirm = passwordConfirmEditText.getText().toString().trim();
+        String postalCode = postalCodeEditText.getText().toString().trim();
+        String address = addressEditText.getText().toString().trim();
 
+        // Check if any field is empty
+        if (userName.isEmpty() || email.isEmpty() || password.isEmpty() ||
+                passwordConfirm.isEmpty() || postalCode.isEmpty() || address.isEmpty()) {
+            Toast.makeText(this, "Minden mezőt ki kell tölteni!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Check if passwords match
         if (!password.equals(passwordConfirm)) {
             Log.e(LOG_TAG, "Passwords do not match.");
             Toast.makeText(this, "A jelszavak nem egyeznek!", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        // Check if terms are accepted
         int checkedId = termsRadioGroup.getCheckedRadioButtonId();
         if (checkedId == R.id.declineTermsRadioButton) {
             Toast.makeText(this, "A felhasználási feltételek elfogadása kötelező!", Toast.LENGTH_SHORT).show();
@@ -96,6 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         Log.i(LOG_TAG, "Registering user: " + userName + ", email: " + email);
 
+        // Proceed with Firebase registration
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
