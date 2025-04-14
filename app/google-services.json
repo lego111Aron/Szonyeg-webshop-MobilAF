@@ -15,7 +15,6 @@
       "oauth_client": [],
       "api_key": [
         {
-//          FIXME: ezt lehet, hogy nem kellene feltölteni, de nem tudom, hogy-e nélkül, hogyan fogod tudni tesztelni
           "current_key": "AIzaSyArXOKReD3DKd-B8EeBpEymW_lJloqGr7E"
         }
       ],
