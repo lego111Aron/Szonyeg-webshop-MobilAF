@@ -2,8 +2,8 @@
     <string name="app_name">Szőnyeg webshop</string>
     <string name="name">Email</string>
     <string name="password">Jelszó</string>
-    <string name="login">Bejelentkezés</string>
-    <string name="registration">Regisztráció</string>
+    <string name="login">BEJELENTKEZÉS</string>
+    <string name="registration">REGISZTRÁCIÓ</string>
     <string name="user_name">Felhasználónév</string>
     <string name="email_address">E-mail cím</string>
     <string name="password_again">Jelszó megerősítése</string>

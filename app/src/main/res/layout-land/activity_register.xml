@@ -19,6 +19,7 @@
             android:id="@+id/registrationTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="@string/registration"
             android:textSize="24sp"
             android:textAlignment="center"
@@ -132,6 +133,7 @@
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:text="@string/registration"
+                android:textSize="18sp"
                 android:onClick="register"
                 android:backgroundTint="@color/darkGreen"
                 android:textColor="@color/yellowishBrown" />
@@ -141,6 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cancel"
+                android:textSize="18sp"
                 android:onClick="cancel"
                 android:backgroundTint="@color/darkGreen"
                 android:textColor="@color/yellowishBrown" />
