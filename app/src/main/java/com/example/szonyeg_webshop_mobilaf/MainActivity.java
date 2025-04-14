@@ -54,10 +54,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        String userName = userNameET.getText().toString();
-        String password = passwordET.getText().toString();
+        String userName = userNameET.getText().toString().trim();
+        String password = passwordET.getText().toString().trim();
 
-//        Log.i(LOG_TAG, "Bejelentkezett: " + userName + ", jelszó: " + password);
+        if (userName.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Tölsd ki mind két mezőt!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mAuth.signInWithEmailAndPassword(userName, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -66,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(LOG_TAG, "User login successfully");
                     startShopping();
                 } else {
-                    Log.d(LOG_TAG, "User login fail");
-                    Toast.makeText(MainActivity.this, "User login fail" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.d(LOG_TAG, "User login failed");
+                    Toast.makeText(MainActivity.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

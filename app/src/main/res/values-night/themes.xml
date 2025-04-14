@@ -2,6 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.SzonyegwebshopMobilAF" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryVariant">@color/darkGreen</item>
+        <item name="colorOnPrimary">@color/yellowishBrown</item>
     </style>
 </resources>
