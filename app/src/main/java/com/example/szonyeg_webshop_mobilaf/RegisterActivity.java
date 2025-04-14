@@ -4,6 +4,7 @@ package com.example.szonyeg_webshop_mobilaf;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,12 +16,19 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final String LOG_TAG = RegisterActivity.class.getName();
@@ -37,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 
     private SharedPreferences preferences;
+    private FirebaseAuth mAuth;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -77,6 +86,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+        mAuth = FirebaseAuth.getInstance();
+
         Log.i(LOG_TAG, "onCreate");
     }
 
@@ -101,8 +112,20 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 
         Log.i(LOG_TAG, "Regisztrált: " + userName + ", e-mail: " + email);
-        //todo regisztrácios funkcionalitás
-        startShopping();
+//        startShopping();
+
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Log.d(LOG_TAG, "User created successfully");
+                    startShopping();
+                } else {
+                    Log.d(LOG_TAG, "User wasn`t created successfully");
+                    Toast.makeText(RegisterActivity.this, "User wasn`t created successfully" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     public void cancle(View view) {
@@ -111,7 +134,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
     private void startShopping(/* register user data */) {
         Intent intent = new Intent(this, ShopListActivity.class);
-        intent.putExtra("SECRET_KEY", SECRET_KEY);
+//        intent.putExtra("SECRET_KEY", SECRET_KEY);
         startActivity(intent);
     }
 
