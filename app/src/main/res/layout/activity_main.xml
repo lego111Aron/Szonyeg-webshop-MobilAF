@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkPeacockBlue"
     tools:context=".MainActivity">
 
     <EditText
@@ -16,10 +17,12 @@
         android:hint="@string/name"
         android:inputType="text"
         android:minHeight="48dp"
+        android:textColor="@color/yellowishBrown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307"
-        tools:layout_editor_absoluteX="16dp" />
+        android:textColorHint="@color/green"
+        android:backgroundTint="@color/green"
+        app:layout_constraintVertical_bias="0.307" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -32,10 +35,12 @@
         android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:textColor="@color/yellowishBrown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextUserName"
-        app:layout_constraintVertical_bias="0.148"
-        tools:layout_editor_absoluteX="30dp" />
+        android:textColorHint="@color/green"
+        android:backgroundTint="@color/green"
+        app:layout_constraintVertical_bias="0.148" />
 
     <Button
         android:id="@+id/loginButton"
@@ -45,6 +50,8 @@
         android:layout_marginRight="10dp"
         android:onClick="login"
         android:text="@string/login"
+        android:backgroundTint="@color/darkGreen"
+        android:textColor="@color/yellowishBrown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -60,6 +67,8 @@
         android:layout_marginRight="10dp"
         android:onClick="register"
         android:text="@string/registration"
+        android:backgroundTint="@color/darkGreen"
+        android:textColor="@color/yellowishBrown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

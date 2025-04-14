@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="darkPeacockBlue">#1a3637</color>
+    <color name="darkGreen">#40534d</color>
+    <color name="green">#677c69</color>
+    <color name="yellowishBrown">#d6bc97</color>
+<!--    <color name="ripple_green">#677c69</color>-->
 </resources>

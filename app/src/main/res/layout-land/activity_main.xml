@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/darkPeacockBlue"
     tools:context=".MainActivity">
 
     <EditText
@@ -18,8 +19,10 @@
         android:ems="10"
         android:hint="@string/name"
         android:inputType="text"
-        android:layout_marginTop="20dp"
-        tools:layout_editor_absoluteX="16dp" />
+        android:textColor="@color/yellowishBrown"
+        android:textColorHint="@color/green"
+        android:backgroundTint="@color/green"
+        android:layout_marginTop="20dp" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -28,29 +31,43 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:minHeight="48dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="100dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:layout_marginTop="20dp"
-        tools:layout_editor_absoluteX="30dp" />
+        android:textColor="@color/yellowishBrown"
+        android:textColorHint="@color/green"
+        android:backgroundTint="@color/green"
+        android:layout_marginTop="20dp" />
 
-    <Button
-        android:id="@+id/loginButton"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:onClick="login"
-        app:layout_constraintVertical_bias="0.09" />
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="wrap_content"
-        android:text="@string/registration"
-        android:onClick="register"
-        app:layout_constraintVertical_bias="0.09" />
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="@string/login"
+            android:backgroundTint="@color/darkGreen"
+            android:textColor="@color/yellowishBrown" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="@string/registration"
+            android:backgroundTint="@color/darkGreen"
+            android:textColor="@color/yellowishBrown" />
+    </LinearLayout>
 </LinearLayout>

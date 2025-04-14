@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="name">Név</string>
+    <string name="app_name">Szőnyeg webshop</string>
+    <string name="name">Email</string>
     <string name="password">Jelszó</string>
-    <string name="login">Bejelentkezésssss</string>
+    <string name="login">Bejelentkezés</string>
     <string name="registration">Regisztráció</string>
     <string name="user_name">Felhasználónév</string>
     <string name="email_address">E-mail cím</string>
@@ -12,6 +12,9 @@
     <string name="address">Póstai cím</string>
     <string name="buyer">vasarlo</string>
     <string name="seller">eladó</string>
+    <string name="accept_terms">Elfogadom az ÁSZF-t</string>
+    <string name="decline_terms">Nem fogdom el az ÁSZF-t</string>
+    <string name="postal_code">Irányítószám</string>
     <string-array name="phone_modes">
         <item>Otthoni</item>
         <item>Munkahelyi</item>

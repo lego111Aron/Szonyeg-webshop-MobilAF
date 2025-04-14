@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkPeacockBlue"
+    tools:context=".RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/registrationTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registration"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:textColor="@color/yellowishBrown"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/userNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="@string/user_name"
+            android:inputType="textPersonName"
+            android:textColor="@color/yellowishBrown"
+            android:textColorHint="@color/green"
+            android:backgroundTint="@color/green"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/userEmailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="@string/email_address"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/yellowishBrown"
+            android:textColorHint="@color/green"
+            android:backgroundTint="@color/green"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColor="@color/yellowishBrown"
+            android:textColorHint="@color/green"
+            android:backgroundTint="@color/green"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/passwordAgainEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="@string/password_again"
+            android:inputType="textPassword"
+            android:textColor="@color/yellowishBrown"
+            android:textColorHint="@color/green"
+            android:backgroundTint="@color/green"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/postalCodeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="@string/postal_code"
+            android:inputType="number"
+            android:textColor="@color/yellowishBrown"
+            android:textColorHint="@color/green"
+            android:backgroundTint="@color/green"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/addressEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="@string/address"
+            android:inputType="textPostalAddress|textMultiLine"
+            android:textColor="@color/yellowishBrown"
+            android:textColorHint="@color/green"
+            android:backgroundTint="@color/green"
+            android:layout_marginTop="20dp" />
+
+        <RadioGroup
+            android:id="@+id/termsRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <RadioButton
+                android:id="@+id/acceptTermsRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/accept_terms"
+                android:textColor="@color/yellowishBrown" />
+
+            <RadioButton
+                android:id="@+id/declineTermsRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/decline_terms"
+                android:textColor="@color/yellowishBrown"
+                android:checked="true" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:text="@string/registration"
+                android:onClick="register"
+                android:backgroundTint="@color/darkGreen"
+                android:textColor="@color/yellowishBrown" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancel"
+                android:onClick="cancel"
+                android:backgroundTint="@color/darkGreen"
+                android:textColor="@color/yellowishBrown" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
