@@ -107,27 +107,23 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
             mItemImage=itemView.findViewById(R.id.itemImage);
             mRatingBar=itemView.findViewById(R.id.ratingBar);
 
-            itemView.findViewById(R.id.add_to_cart).setOnClickListener(new View.OnClickListener() {
+            /*itemView.findViewById(R.id.add_to_cart).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Log.d("Activiy", "Add cart button clicked!");
                 }
-            });
+            });*/
         }
 
         public void bindTo(ShoppingItem currentItem) {
             mTitleText.setText(currentItem.getName());
             mInfoText.setText(currentItem.getInfo());
             mPriceText.setText(currentItem.getPrice());
-//            mItemImage.setImageResource(currentItem.getImageResource());
             mRatingBar.setRating(currentItem.getRetadInfo());
-
-            Glide.with(mContext).load(currentItem.getImageResource()).into(mItemImage);
-
-            /*if (getAdapterPosition() > lastPosition) {
-                itemView.setAnimation(android.view.animation.AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-                lastPosition = getAdapterPosition();
-            }*/
+        
+            Glide.with(mContext).load(currentItem.getImageUrl()).into(mItemImage); // <-- int helyett String
+            itemView.findViewById(R.id.add_to_cart).setOnClickListener(view -> ((ShopListActivity)mContext).addToCart(currentItem));
+            itemView.findViewById(R.id.delete).setOnClickListener(view -> ((ShopListActivity)mContext).deleteItem(currentItem));
         }
     }
 }

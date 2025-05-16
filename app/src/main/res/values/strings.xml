@@ -58,8 +58,12 @@
     </string-array>
 
     <string-array name="shopping_item_images">
-        <item>@drawable/fri281taup_045_eck</item>
-        <item>@drawable/fri281taup_045_eck</item>
+        <item>@drawable/test4</item>
+        <item>@drawable/test5</item>
+        <item>@drawable/test4</item>
+        <item>@drawable/test5</item>
+        <item>@drawable/test4</item>
+        <item>@drawable/test5</item>
     </string-array>
 
     <string-array name="shopping_item_prices">

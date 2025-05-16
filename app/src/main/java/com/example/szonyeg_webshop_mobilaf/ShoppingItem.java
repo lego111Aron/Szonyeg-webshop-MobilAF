@@ -1,37 +1,48 @@
 package com.example.szonyeg_webshop_mobilaf;
 
 public class ShoppingItem {
+    private String id;
     private String name;
     private String info;
     private String price;
     private float retadInfo;
-    private final int imageResourceId;
+    private String imageUrl; // <-- int helyett String
 
-    public ShoppingItem(String name, String info, String price, float ratedInfo, int imageResource) {
+    private int cartedCount;
+
+    public ShoppingItem() {}
+
+    public ShoppingItem(String name, String info, String price, float ratedInfo, String imageUrl, int cartedCount) {
         this.name = name;
         this.info = info;
         this.price = price;
         this.retadInfo = ratedInfo;
-        this.imageResourceId = imageResource;
+        this.imageUrl = imageUrl;
+        this.cartedCount = cartedCount;
     }
 
-    public int getImageResource() {
-        return imageResourceId;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public float getRetadInfo() {
         return retadInfo;
     }
 
-    String getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    String getInfo() {
+    public String getInfo() {
         return info;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
+
+    public int getCartedCount() {return cartedCount; }
+    public String _getId() {return id;}
+    public void setId(String id) {this.id = id; }
 }
+// ...existing code...
