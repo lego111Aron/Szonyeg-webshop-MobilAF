@@ -13,15 +13,16 @@
         android:title="Cart"
         android:icon="@drawable/shopping_cart"
         app:showAsAction="always"
-        android:actionLayout=""
         />
+<!--        FIXME: ez az eredeti-->
+<!--    android:actionLayout=""-->
 
     <item
         android:id="@+id/view_selector"
         android:title="Search"
         android:icon="@drawable/view_grid"
         app:showAsAction="always"
-        app:actionViewClass="android.widget.SearchView" />
+     />
 
     <item
         android:id="@+id/setting_button"

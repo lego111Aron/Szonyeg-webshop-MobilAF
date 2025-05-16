@@ -16,11 +16,13 @@ import android.widget.TextView;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+//import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -47,6 +49,9 @@ public class ShopListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_list);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
@@ -64,7 +69,7 @@ public class ShopListActivity extends AppCompatActivity {
         titleText.startAnimation(fadeIn);
         subtitleText.startAnimation(fadeIn);
 
-        Button logoutButton = findViewById(R.id.logoutButton);
+        /*Button logoutButton = findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(view -> {
             mAuth.signOut();
             Log.d(LOG_TAG, "User signed out");
@@ -73,7 +78,7 @@ public class ShopListActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
-        });
+        });*/
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, gridNumber));
@@ -172,12 +177,12 @@ public class ShopListActivity extends AppCompatActivity {
 //        redCircle = (FrameLayout) rootView.findViewById(R.id.view_alert_red_circle);
 //        contentTextView = (TextView) rootView.findViewById(R.id.view_alert_count_textview);
 
-        rootView.setOnClickListener(new View.OnClickListener() {
+        /*rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onOptionsItemSelected(alertMenuItem);
             }
-        });
+        });*/
         return super.onPrepareOptionsMenu(menu);
     }
 }

@@ -8,6 +8,16 @@
     android:background="@color/darkPeacockBlue"
     tools:context=".ShopListActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/darkGreen"
+        android:titleTextColor="@color/yellowishBrown"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
@@ -16,10 +26,10 @@
         android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="@color/yellowishBrown"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:id="@+id/subtitleText"
@@ -35,11 +45,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"/>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@id/subtitleText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="Termékek listája"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
-    <Button
+<!--    <Button
         android:id="@+id/logoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,6 +65,6 @@
         android:backgroundTint="@color/darkGreen"
         android:textColor="@color/yellowishBrown"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_marginEnd="16dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

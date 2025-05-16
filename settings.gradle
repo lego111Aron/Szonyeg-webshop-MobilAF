@@ -19,5 +19,14 @@ dependencyResolutionManagement {
     }
 }
 
+/*
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+*/
+
 rootProject.name = "Szonyeg-webshop-MobilAF"
 include ':app'
