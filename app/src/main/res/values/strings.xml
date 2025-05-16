@@ -16,6 +16,8 @@
     <string name="decline_terms">Nem fogdom el az ÁSZF-t</string>
     <string name="postal_code">Irányítószám</string>
     <string name="logout">Kijelentkezés</string>
+<!--    <string name="item_placeholder">Shop</string>-->
+
 
     <string-array name="phone_modes">
         <item>Otthoni</item>
@@ -23,4 +25,50 @@
         <item>Mobil</item>
         <item>Egyéb</item>
     </string-array>
+
+    <string name="title_placeholder">Név</string>
+    <string name="item_placeholder">Leiras</string>
+    <string name="item_info_placeholder">Infó a termékről</string>
+
+    <string-array name="shopping_item_names">
+        <item>Szőnyeg</item>
+        <item>Padló</item>
+        <item>Falburkolat</item>
+        <item>Függöny</item>
+        <item>Ágytakaró</item>
+        <item>Párna</item>
+    </string-array>
+
+    <string-array name="shopping_item_desc">
+        <item>Ez egy szőnyeg</item>
+        <item>Ez egy padló</item>
+        <item>Ez egy falburkolat</item>
+        <item>Ez egy függöny</item>
+        <item>Ez egy ágytakaró</item>
+        <item>Ez egy párna</item>
+    </string-array>
+
+    <string-array name="shopping_item_rates">
+        <item>4.5</item>
+        <item>3.5</item>
+        <item>2.5</item>
+        <item>4.0</item>
+        <item>5.0</item>
+        <item>3.0</item>
+    </string-array>
+
+    <string-array name="shopping_item_images">
+        <item>@drawable/fri281taup_045_eck</item>
+        <item>@drawable/fri281taup_045_eck</item>
+    </string-array>
+
+    <string-array name="shopping_item_prices">
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>4000</item>
+        <item>5000</item>
+        <item>6000</item>
+    </string-array>
+
 </resources>
