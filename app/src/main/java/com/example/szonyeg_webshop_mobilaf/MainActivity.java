@@ -36,28 +36,35 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences preferences;
     private FirebaseAuth mAuth; // 5. videó 28:40
 
-    private static final int REQUEST_CONTACTS_PERMISSION = 101;
+    private static final int REQUEST_CALL_PERMISSION = 101;
 
     public void requestCallHelp(View view) {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.READ_CONTACTS},
-                    REQUEST_CONTACTS_PERMISSION);
+                    new String[]{Manifest.permission.CALL_PHONE},
+                    REQUEST_CALL_PERMISSION);
         } else {
-            Toast.makeText(this, "Képzeletbeli hívás elindult, csak foglalt minden vonal!", Toast.LENGTH_SHORT).show();
+            makePhoneCall();
         }
     }
+
+    private void makePhoneCall() {
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(android.net.Uri.parse("tel:123456789")); // Nem létező szám
+        startActivity(callIntent);
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CONTACTS_PERMISSION) {
+        if (requestCode == REQUEST_CALL_PERMISSION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Névjegyzék engedély megadva.", Toast.LENGTH_SHORT).show();
+                makePhoneCall();
             } else {
-                Toast.makeText(this, "Névjegyzék engedély megtagadva.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Hívás engedély megtagadva.", Toast.LENGTH_SHORT).show();
             }
         }
     }
