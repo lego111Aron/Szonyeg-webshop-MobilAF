@@ -42,7 +42,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:minHeight="48dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="40dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -82,4 +82,16 @@
             android:textColor="@color/yellowishBrown"
             android:onClick="register" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/helpCallButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ügyvélszolgálat hívása"
+        android:textColor="@color/yellowishBrown"
+        android:backgroundTint="@color/darkGreen"
+        android:onClick="requestCallHelp"
+        android:layout_gravity="end"
+        android:layout_margin="16dp" />
+
 </LinearLayout>

@@ -89,4 +89,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
+    <Button
+        android:id="@+id/helpCallButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ügyfélszolgálat hívása"
+        android:textColor="@color/yellowishBrown"
+        android:backgroundTint="@color/darkGreen"
+        android:onClick="requestCallHelp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
