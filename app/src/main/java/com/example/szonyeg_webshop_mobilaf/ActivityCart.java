@@ -1,5 +1,6 @@
 package com.example.szonyeg_webshop_mobilaf;
 
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -42,7 +43,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class ShopListActivity extends AppCompatActivity {
+public class ActivityCart extends AppCompatActivity {
+
+
     private static final String LOG_TAG = ShopListActivity.class.getName();
     private FirebaseUser user;
     private FirebaseAuth mAuth;
@@ -63,7 +66,7 @@ public class ShopListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shop_list);
+        setContentView(R.layout.activity_cart);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -79,22 +82,12 @@ public class ShopListActivity extends AppCompatActivity {
         }
 
         TextView titleText = findViewById(R.id.titleText);
-        TextView subtitleText = findViewById(R.id.subtitleText);
+//        TextView subtitleText = findViewById(R.id.subtitleText);
 
         Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         titleText.startAnimation(fadeIn);
-        subtitleText.startAnimation(fadeIn);
+//        subtitleText.startAnimation(fadeIn);
 
-        /*Button logoutButton = findViewById(R.id.logoutButton);
-        logoutButton.setOnClickListener(view -> {
-            mAuth.signOut();
-            Log.d(LOG_TAG, "User signed out");
-
-            Intent intent = new Intent(ShopListActivity.this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        });*/
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, gridNumber));
@@ -110,13 +103,12 @@ public class ShopListActivity extends AppCompatActivity {
 
         mNotificationHandler = new NotificationHandler(this);
         mAlarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        setmAlarmManager();
     }
 
     private void queryData() {
         mItemList.clear();
 //        mItems.whereEqualTo()
-        mItems.orderBy("cartedCount", Query.Direction.DESCENDING).limit(10).get().addOnSuccessListener(queryDocumentSnapshots -> {
+        mItems.orderBy("retadInfo", Query.Direction.DESCENDING).limit(3).get().addOnSuccessListener(queryDocumentSnapshots -> {
             for(QueryDocumentSnapshot document : queryDocumentSnapshots) {
                 ShoppingItem item = document.toObject(ShoppingItem.class);
                 item.setId(document.getId());
@@ -154,6 +146,7 @@ public class ShopListActivity extends AppCompatActivity {
 //        mAdapter.notifyDataSetChanged();
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -185,13 +178,11 @@ public class ShopListActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.actual_cart) {
             Log.d(LOG_TAG, "Settings button clicked");
-            Intent intent = new Intent(this, ActualCart.class);
-            startActivity(intent);
             return true;
         } else if (item.getItemId() == R.id.cart) {
             Log.d(LOG_TAG, "Cart button clicked");
             // Itt indítsd el az ActivityCart-ot:
-            Intent intent = new Intent(this, ActivityCart.class);
+            Intent intent = new Intent(this, ShopListActivity.class);
             startActivity(intent);
             return true;
         } /*else if (item.getItemId() == R.id.view_selector) {
@@ -204,7 +195,7 @@ public class ShopListActivity extends AppCompatActivity {
                 changeSpanCount(item, R.drawable.view_row, 2);
             }
             return true;
-        }*/ else {
+        } */else {
             return super.onOptionsItemSelected(item);
         }
 //        return super.onOptionsItemSelected(item);
@@ -217,62 +208,4 @@ public class ShopListActivity extends AppCompatActivity {
         layoutManager.setSpanCount(spanCount);
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        final MenuItem alertMenuItem = menu.findItem(R.id.cart);
-        FrameLayout rootView = (FrameLayout) alertMenuItem.getActionView();
-
-//        redCircle = (FrameLayout) rootView.findViewById(R.id.view_alert_red_circle);
-//        contentTextView = (TextView) rootView.findViewById(R.id.view_alert_count_textview);
-
-        /*rootView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onOptionsItemSelected(alertMenuItem);
-            }
-        });*/
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    public void deleteItem(ShoppingItem item) {
-        //delete
-        DocumentReference ref = mItems.document(item._getId());
-
-        ref.delete().addOnSuccessListener(success -> {
-                    Log.d(LOG_TAG, "Item is successfuly deleted"+ item._getId());
-                })
-                .addOnFailureListener(failure -> {
-                    Toast.makeText(this, "Item"+ item._getId()+ "cannot be deleted.", Toast.LENGTH_LONG).show();
-                });
-        queryData();
-        mNotificationHandler.cancel();
-    }
-    public void addToCart(ShoppingItem item) {
-        //update
-        mItems.document(item._getId()).update("cartedCount", item.getCartedCount() + 1)
-//                .addOnSuccessListener(success -> {
-//                    Log.d(LOG_TAG, "Item is successfuly added to cart"+ item._getId());
-//                })
-                .addOnFailureListener(failure -> {
-                    Toast.makeText(this, "Item"+ item._getId()+ "cannot be added to cart.", Toast.LENGTH_LONG).show();
-                });
-
-        mNotificationHandler.send(item.getName());
-        queryData();
-    }
-
-    private void setmAlarmManager() {
-//        long repeatInterval = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
-        long repeatInterval = 1000*60; // 1 minute
-        long triggerTime = SystemClock.elapsedRealtime() + repeatInterval;
-        Intent intent = new Intent(this, AlarmReciver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        mAlarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                triggerTime,
-                repeatInterval,
-                pendingIntent);
-
-//        mAlarmManager.cancel(pendingIntent);
-    }
 }

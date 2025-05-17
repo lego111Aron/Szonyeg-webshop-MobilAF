@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import com.bumptech.glide.Glide;
 
+
+
 public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapter.ViewHolder> implements Filterable {
 
     private ArrayList<ShoppingItem> mShoppingItemData;
@@ -27,10 +29,16 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
     private Context mContext;
     private int lastPosition = -1;
 
-    ShoppingItemAdapter(Context context, ArrayList<ShoppingItem> itemData) {
+    private View addToCartButton; // Deklaráció
+    private View deleteButton;    // Deklaráció
+
+    private boolean isCartPage; // Új mező, amely jelzi, hogy a kosár oldalon vagy-e
+
+    ShoppingItemAdapter(Context context, ArrayList<ShoppingItem> itemData, boolean isCartPage) {
         this.mShoppingItemData = itemData;
         this.mShoppingItemDataAll = itemData;
         this.mContext = context;
+        this.isCartPage = isCartPage; // Inicializálás
     }
 
     @NonNull
@@ -42,7 +50,7 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
     @Override
     public void onBindViewHolder(ShoppingItemAdapter.ViewHolder holder, int position) {
         ShoppingItem currentItem = mShoppingItemData.get(position);
-        holder.bindTo(currentItem);
+        holder.bindTo(currentItem, isCartPage); // Átadjuk az isCartPage értékét
         if (holder.getAdapterPosition() > lastPosition) {
             Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.slide_in_row);
             holder.itemView.setAnimation(animation);
@@ -113,17 +121,31 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
                     Log.d("Activiy", "Add cart button clicked!");
                 }
             });*/
+
+            // Gombok inicializálása
+            addToCartButton = itemView.findViewById(R.id.add_to_cart);
+            deleteButton = itemView.findViewById(R.id.delete);
         }
 
-        public void bindTo(ShoppingItem currentItem) {
+        public void bindTo(ShoppingItem currentItem, boolean isCartPage) {
             mTitleText.setText(currentItem.getName());
             mInfoText.setText(currentItem.getInfo());
             mPriceText.setText(currentItem.getPrice());
             mRatingBar.setRating(currentItem.getRetadInfo());
-        
-            Glide.with(mContext).load(currentItem.getImageUrl()).into(mItemImage); // <-- int helyett String
-            itemView.findViewById(R.id.add_to_cart).setOnClickListener(view -> ((ShopListActivity)mContext).addToCart(currentItem));
-            itemView.findViewById(R.id.delete).setOnClickListener(view -> ((ShopListActivity)mContext).deleteItem(currentItem));
+
+            Glide.with(mContext).load(currentItem.getImageUrl()).into(mItemImage);
+
+            // Gombok láthatóságának beállítása
+            if (isCartPage) {
+                addToCartButton.setVisibility(View.GONE); // Elrejtjük a "Kosárba" gombot
+                deleteButton.setVisibility(View.VISIBLE); // Megjelenítjük a "Törlés" gombot
+            } else {
+                addToCartButton.setVisibility(View.VISIBLE); // Megjelenítjük a "Kosárba" gombot
+                deleteButton.setVisibility(View.GONE); // Elrejtjük a "Törlés" gombot
+            }
+
+            addToCartButton.setOnClickListener(view -> ((ShopListActivity) mContext).addToCart(currentItem));
+            deleteButton.setOnClickListener(view -> ((ShopListActivity) mContext).deleteItem(currentItem));
         }
     }
 }

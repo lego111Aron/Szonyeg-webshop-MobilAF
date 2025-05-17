@@ -60,10 +60,10 @@
     <string-array name="shopping_item_images">
         <item>@drawable/test4</item>
         <item>@drawable/test5</item>
-        <item>@drawable/test4</item>
+        <item>@drawable/image2</item>
         <item>@drawable/test5</item>
         <item>@drawable/test4</item>
-        <item>@drawable/test5</item>
+        <item>@drawable/image2</item>
     </string-array>
 
     <string-array name="shopping_item_prices">
