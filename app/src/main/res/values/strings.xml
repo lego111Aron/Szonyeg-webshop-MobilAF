@@ -31,48 +31,48 @@
     <string name="item_info_placeholder">Infó a termékről</string>
 
     <string-array name="shopping_item_names">
-        <item>Szőnyeg</item>
-        <item>Padló</item>
-        <item>Falburkolat</item>
-        <item>Függöny</item>
-        <item>Ágytakaró</item>
-        <item>Párna</item>
+        <item>lidersholm</item>
+        <item>vollerslev</item>
+        <item>vollerslev2</item>
+        <item>stoense</item>
+        <item>stoense2</item>
+        <item>hampen</item>
     </string-array>
 
     <string-array name="shopping_item_desc">
-        <item>Ez egy szőnyeg</item>
-        <item>Ez egy padló</item>
-        <item>Ez egy falburkolat</item>
-        <item>Ez egy függöny</item>
-        <item>Ez egy ágytakaró</item>
-        <item>Ez egy párna</item>
+        <item>lydersholm_rug_flatwoven_in_outdoor_medium_brown</item>
+        <item>vollerslev_rug_high_pile_gray</item>
+        <item>vollerslev_rug_high_pile_grey_green</item>
+        <item>stoense_rug_low_pile_dark_grey</item>
+        <item>stoense_rug_low_pile_medium_grey</item>
+        <item>hampen_rug_high_pile_beige</item>
     </string-array>
 
     <string-array name="shopping_item_rates">
-        <item>4.5</item>
+        <item>3.5</item>
         <item>3.5</item>
         <item>2.5</item>
         <item>4.0</item>
-        <item>5.0</item>
-        <item>3.0</item>
+        <item>1.5</item>
+        <item>4.5</item>
     </string-array>
 
     <string-array name="shopping_item_images">
-        <item>@drawable/test4</item>
-        <item>@drawable/test5</item>
-        <item>@drawable/image2</item>
-        <item>@drawable/test5</item>
-        <item>@drawable/test4</item>
-        <item>@drawable/image2</item>
+        <item>@drawable/lydersholm_rug_flatwoven_in_outdoor_medium_brown</item>
+        <item>@drawable/vollerslev_rug_high_pile_gray</item>
+        <item>@drawable/vollerslev_rug_high_pile_grey_green</item>
+        <item>@drawable/stoense_rug_low_pile_dark_grey</item>
+        <item>@drawable/stoense_rug_low_pile_medium_grey</item>
+        <item>@drawable/hampen_rug_high_pile_beige</item>
     </string-array>
 
     <string-array name="shopping_item_prices">
         <item>1000</item>
-        <item>2000</item>
+        <item>5000</item>
         <item>3000</item>
         <item>4000</item>
-        <item>5000</item>
-        <item>6000</item>
+        <item>1100</item>
+        <item>4500</item>
     </string-array>
 
 </resources>

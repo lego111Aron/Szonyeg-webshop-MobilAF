@@ -116,7 +116,7 @@ public class ShopListActivity extends AppCompatActivity {
     private void queryData() {
         mItemList.clear();
 //        mItems.whereEqualTo()
-        mItems.orderBy("cartedCount", Query.Direction.DESCENDING).limit(10).get().addOnSuccessListener(queryDocumentSnapshots -> {
+        mItems.orderBy("name", Query.Direction.DESCENDING).limit(10).get().addOnSuccessListener(queryDocumentSnapshots -> {
             for(QueryDocumentSnapshot document : queryDocumentSnapshots) {
                 ShoppingItem item = document.toObject(ShoppingItem.class);
                 item.setId(document.getId());
@@ -181,6 +181,8 @@ public class ShopListActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.log_out_button) {
             Log.d(LOG_TAG, "Log out button clicked");
             FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
             finish();
             return true;
         } else if (item.getItemId() == R.id.actual_cart) {
@@ -190,9 +192,13 @@ public class ShopListActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.cart) {
             Log.d(LOG_TAG, "Cart button clicked");
-            // Itt indítsd el az ActivityCart-ot:
+
+            // Debugging log to ensure the intent is created
+            Log.d(LOG_TAG, "Navigating to ActivityCart");
+
             Intent intent = new Intent(this, ActivityCart.class);
             startActivity(intent);
+
             return true;
         } /*else if (item.getItemId() == R.id.view_selector) {
             Log.d(LOG_TAG, "View selector button clicked");

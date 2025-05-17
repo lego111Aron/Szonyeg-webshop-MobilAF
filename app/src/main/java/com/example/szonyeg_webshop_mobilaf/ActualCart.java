@@ -176,18 +176,24 @@ public class ActualCart extends AppCompatActivity {
         if (item.getItemId() == R.id.log_out_button) {
             Log.d(LOG_TAG, "Log out button clicked");
             FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
             finish();
             return true;
         } else if (item.getItemId() == R.id.actual_cart) {
             Log.d(LOG_TAG, "Settings button clicked");
-            Intent intent = new Intent(this, ActivityCart.class);
+            Intent intent = new Intent(this, ActualCart.class);
             startActivity(intent);
             return true;
         } else if (item.getItemId() == R.id.cart) {
             Log.d(LOG_TAG, "Cart button clicked");
-            // Itt indítsd el az ActivityCart-ot:
-            Intent intent = new Intent(this, ShopListActivity.class);
+
+            // Debugging log to ensure the intent is created
+            Log.d(LOG_TAG, "Navigating to ActivityCart");
+
+            Intent intent = new Intent(this, ActivityCart.class);
             startActivity(intent);
+
             return true;
         } /*else if (item.getItemId() == R.id.view_selector) {
             Log.d(LOG_TAG, "View selector button clicked");
@@ -210,6 +216,20 @@ public class ActualCart extends AppCompatActivity {
         item.setIcon(drawableId);
         GridLayoutManager layoutManager = (GridLayoutManager) mRecyclerView.getLayoutManager();
         layoutManager.setSpanCount(spanCount);
+    }
+
+    public void deleteItem(ShoppingItem item) {
+        //delete
+        DocumentReference ref = mItems.document(item._getId());
+
+        ref.delete().addOnSuccessListener(success -> {
+                    Log.d(LOG_TAG, "Item is successfuly deleted"+ item._getId());
+                })
+                .addOnFailureListener(failure -> {
+                    Toast.makeText(this, "Item"+ item._getId()+ "cannot be deleted.", Toast.LENGTH_LONG).show();
+                });
+        queryData();
+        mNotificationHandler.cancel();
     }
 
 }

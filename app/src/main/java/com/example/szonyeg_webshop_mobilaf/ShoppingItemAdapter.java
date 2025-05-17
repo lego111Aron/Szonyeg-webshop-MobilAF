@@ -144,8 +144,12 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
                 deleteButton.setVisibility(View.GONE); // Elrejtjük a "Törlés" gombot
             }
 
-            addToCartButton.setOnClickListener(view -> ((ShopListActivity) mContext).addToCart(currentItem));
-            deleteButton.setOnClickListener(view -> ((ShopListActivity) mContext).deleteItem(currentItem));
+            if (mContext instanceof ShopListActivity) {
+                addToCartButton.setOnClickListener(view -> ((ShopListActivity) mContext).addToCart(currentItem));
+            } else if (mContext instanceof ActivityCart) {
+                addToCartButton.setOnClickListener(view -> ((ActivityCart) mContext).addToCart(currentItem));
+            }
+            deleteButton.setOnClickListener(view -> ((ActualCart) mContext).deleteItem(currentItem));
         }
     }
 }

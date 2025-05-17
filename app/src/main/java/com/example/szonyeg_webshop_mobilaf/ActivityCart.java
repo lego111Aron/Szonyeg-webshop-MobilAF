@@ -174,16 +174,24 @@ public class ActivityCart extends AppCompatActivity {
         if (item.getItemId() == R.id.log_out_button) {
             Log.d(LOG_TAG, "Log out button clicked");
             FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
             finish();
             return true;
         } else if (item.getItemId() == R.id.actual_cart) {
             Log.d(LOG_TAG, "Settings button clicked");
+            Intent intent = new Intent(this, ActualCart.class);
+            startActivity(intent);
             return true;
         } else if (item.getItemId() == R.id.cart) {
             Log.d(LOG_TAG, "Cart button clicked");
-            // Itt indítsd el az ActivityCart-ot:
+
+            // Debugging log to ensure the intent is created
+            Log.d(LOG_TAG, "Navigating to ShopListActivity");
+
             Intent intent = new Intent(this, ShopListActivity.class);
             startActivity(intent);
+
             return true;
         } /*else if (item.getItemId() == R.id.view_selector) {
             Log.d(LOG_TAG, "View selector button clicked");
@@ -208,4 +216,17 @@ public class ActivityCart extends AppCompatActivity {
         layoutManager.setSpanCount(spanCount);
     }
 
+    public void addToCart(ShoppingItem item) {
+        //update
+        mItems.document(item._getId()).update("cartedCount", item.getCartedCount() + 1)
+//                .addOnSuccessListener(success -> {
+//                    Log.d(LOG_TAG, "Item is successfuly added to cart"+ item._getId());
+//                })
+                .addOnFailureListener(failure -> {
+                    Toast.makeText(this, "Item"+ item._getId()+ "cannot be added to cart.", Toast.LENGTH_LONG).show();
+                });
+
+        mNotificationHandler.send(item.getName());
+        queryData();
+    }
 }
