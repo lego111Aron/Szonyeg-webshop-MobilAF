@@ -149,7 +149,7 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
             } else if (mContext instanceof ActivityCart) {
                 addToCartButton.setOnClickListener(view -> ((ActivityCart) mContext).addToCart(currentItem));
             }
-            deleteButton.setOnClickListener(view -> ((ActualCart) mContext).deleteItem(currentItem));
+            deleteButton.setOnClickListener(view -> ((ShopListActivity) mContext).deleteItem(currentItem));
         }
     }
 }
