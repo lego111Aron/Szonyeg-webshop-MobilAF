@@ -217,16 +217,6 @@ public class ActivityCart extends AppCompatActivity {
     }
 
     public void addToCart(ShoppingItem item) {
-        //update
-        mItems.document(item._getId()).update("cartedCount", item.getCartedCount() + 1)
-//                .addOnSuccessListener(success -> {
-//                    Log.d(LOG_TAG, "Item is successfuly added to cart"+ item._getId());
-//                })
-                .addOnFailureListener(failure -> {
-                    Toast.makeText(this, "Item"+ item._getId()+ "cannot be added to cart.", Toast.LENGTH_LONG).show();
-                });
 
-        mNotificationHandler.send(item.getName());
-        queryData();
     }
 }

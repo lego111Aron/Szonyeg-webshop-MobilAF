@@ -134,22 +134,8 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
             mRatingBar.setRating(currentItem.getRetadInfo());
 
             Glide.with(mContext).load(currentItem.getImageUrl()).into(mItemImage);
-
-            // Gombok láthatóságának beállítása
-            if (isCartPage) {
-                addToCartButton.setVisibility(View.GONE); // Elrejtjük a "Kosárba" gombot
-                deleteButton.setVisibility(View.VISIBLE); // Megjelenítjük a "Törlés" gombot
-            } else {
-                addToCartButton.setVisibility(View.VISIBLE); // Megjelenítjük a "Kosárba" gombot
-                deleteButton.setVisibility(View.GONE); // Elrejtjük a "Törlés" gombot
-            }
-
-            if (mContext instanceof ShopListActivity) {
-                addToCartButton.setOnClickListener(view -> ((ShopListActivity) mContext).addToCart(currentItem));
-            } else if (mContext instanceof ActivityCart) {
-                addToCartButton.setOnClickListener(view -> ((ActivityCart) mContext).addToCart(currentItem));
-            }
-            deleteButton.setOnClickListener(view -> ((ShopListActivity) mContext).deleteItem(currentItem));
+            itemView.findViewById(R.id.add_to_cart).setOnClickListener(view -> ((ShopListActivity)mContext).addToCart(currentItem));
+            itemView.findViewById(R.id.delete).setOnClickListener(view -> ((ShopListActivity)mContext).deleteItem(currentItem));
         }
     }
 }
