@@ -83,15 +83,36 @@
             android:onClick="register" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/helpCallButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ügyvélszolgálat hívása"
-        android:textColor="@color/yellowishBrown"
-        android:backgroundTint="@color/darkGreen"
-        android:onClick="requestCallHelp"
-        android:layout_gravity="end"
-        android:layout_margin="16dp" />
+        android:orientation="horizontal"
+        android:layout_margin="16dp">
+
+        <Button
+            android:id="@+id/helpCallButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="40dp"
+            android:layout_height="48dp"
+            android:text="Ügyvélszolgálat hívása"
+            android:textColor="@color/yellowishBrown"
+            android:onClick="requestCallHelp"
+            android:backgroundTint="@color/darkGreen" />
+
+        <Button
+            android:id="@+id/button_load_contacts"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="40dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="10dp"
+            android:text="Kontaktok betöltése"
+            android:textColor="@color/yellowishBrown"
+            android:backgroundTint="@color/darkGreen"
+            android:onClick="loadContacts"/>
+    </LinearLayout>
+
+
 
 </LinearLayout>

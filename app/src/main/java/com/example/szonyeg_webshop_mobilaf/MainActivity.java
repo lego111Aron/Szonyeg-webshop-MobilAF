@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String PREF_KEY = MainActivity.class.getPackage().toString();
     private static final int SECRET_KEY = 99;
 
+    private static final int REQUEST_CONTACTS_PERMISSION = 102;
+
     EditText userNameET;
     EditText passwordET;
 
@@ -49,6 +51,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
+    public void loadContacts(View view) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Request permission
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_CONTACTS},
+                    REQUEST_CONTACTS_PERMISSION);
+        } else {
+            // Permission already granted
+            Toast.makeText(this, "Contacts permission already granted.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
     private void makePhoneCall() {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(android.net.Uri.parse("tel:123456789")); // Nem létező szám
@@ -57,14 +76,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CALL_PERMISSION) {
+        if (requestCode == REQUEST_CONTACTS_PERMISSION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                makePhoneCall();
+                Toast.makeText(this, "Contacts permission granted.", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Hívás engedély megtagadva.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Contacts permission denied.", Toast.LENGTH_SHORT).show();
             }
         }
     }

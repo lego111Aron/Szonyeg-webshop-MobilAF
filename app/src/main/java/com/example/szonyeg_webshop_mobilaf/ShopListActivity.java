@@ -109,8 +109,8 @@ public class ShopListActivity extends AppCompatActivity {
         queryData();
 
         mNotificationHandler = new NotificationHandler(this);
-        mAlarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        setmAlarmManager();
+//        mAlarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//        setmAlarmManager();
     }
 
     private void queryData() {
@@ -263,11 +263,11 @@ public class ShopListActivity extends AppCompatActivity {
                     Toast.makeText(this, "Item"+ item._getId()+ "cannot be added to cart.", Toast.LENGTH_LONG).show();
                 });
 
-        mNotificationHandler.send(item.getName());
+//        mNotificationHandler.send(item.getName());
         queryData();
     }
 
-    private void setmAlarmManager() {
+    /*private void setmAlarmManager() {
 //        long repeatInterval = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
         long repeatInterval = 1000*60; // 1 minute
         long triggerTime = SystemClock.elapsedRealtime() + repeatInterval;
@@ -280,5 +280,5 @@ public class ShopListActivity extends AppCompatActivity {
                 pendingIntent);
 
 //        mAlarmManager.cancel(pendingIntent);
-    }
+    }*/
 }
